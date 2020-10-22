@@ -56,6 +56,9 @@ void encrypt(char* clear_file, char* key_file, char* cipher_file){
 	
 	printf("\nGenerated key: %s\n", key);
 	printf("Encrypted text: %s\n", cipher_text);
+
+	free(key);
+	free(cipher_text);
 }
 
 void decrypt(char* key_file, char* cipher_file, char* clear_file){
@@ -76,6 +79,8 @@ void decrypt(char* key_file, char* cipher_file, char* clear_file){
 
 	printf("\nText to decrypt: %s\n", encrypted_string);
 	printf("\nDecrypted text: %s\n", decrypted_string);
+	
+	free(decrypted_string);
 }
 
 char* read_file(char *file_name)
@@ -115,7 +120,7 @@ void write_file(char *string, char *file_name)
 void make_rand_key(int length, char* key){
 	int i;	
 	for(i = 0; i < length; i++){
-		key[i] = (char)(rand()%(122-33))+33;
+		key[i] = (char)(rand()%256);
 	}
 
 }
